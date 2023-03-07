@@ -5,12 +5,5 @@ architectures:
       - path: /
         doc: index
 
-      - path: example-docs
-        doc: example-docs/index
-        subpaths:
-          - title: Subpages
-            subpaths:
-              - path: first-subpage
-                doc: example-docs/first-subpage
-          - path: another-page
-            doc: example-docs/another-page
+      - path: overview
+        doc: 01-overview/overview
