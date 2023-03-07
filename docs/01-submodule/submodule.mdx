@@ -10,12 +10,12 @@ title: 'Submodule'
 Para adicionar um submódulo, isto é uma pasta de outro repositório do GitHub, copiar o endereço do repositório e executar:
 
 ```
-git submodule add https://github.com/alexandranaomi/mark-template-test-2.git test-2
+git submodule add https://github.com/alexandranaomi/mark-template-test-2.git docs/01-submodules
 ```
 
-sendo `test-2` a pasta de destino, na qual serão clonados todos os arquivos e pastas do repositório de origem.
+sendo `docs/01-submodules` a pasta de destino, na qual serão clonados todos os arquivos e pastas do repositório de origem.
 
-Arrastar as pastas desejadas para dentro da pasta `docs`. Exemplo:
+Exemplo:
 
 ```
 docs
@@ -23,7 +23,7 @@ docs
      03-design-system  < do repositório test-3
 ```
 
-Será gerado também o arquivo `.gitmodules`, no qual deverão ser alterados os caminhos conforme a pasta `docs`:
+Será gerado também o arquivo `.gitmodules`, com os caminhos conforme a pasta `docs`:
 
 ```
 [submodule "docs/01-submodules"]
@@ -45,16 +45,16 @@ etc
 ### 2. Atualizar os submodules
 
 Quando houver modificação no repositório de origem, o submódulo deverá ser atualizado.
-Para atualizar o submódulo entrar na pasta docs e fazer um git pull para puxar as modificaçoes:
+Para atualizar o submódulo entrar na pasta docs/subpasta e fazer um git pull para puxar as modificaçoes:
 
 ```
-cd docs
+cd docs/01-submodules
 git pull
 ```
 
 Se estiver atualizado, vai retornar `Already up to date`. Caso contrário vai fazer o pull dos respositórios de origem.
 
-Para sair da pasta docs executar `cd ..`
+Para sair da pasta docs executar `cd ..` 2 vezes.
 
 OBS: o `git pull` dentro da pasta docs atualiza os submódulos (e possivelmente outros arquivos dentro dela). O `git pull` fora dela atualiza o próprio repositório.
 
