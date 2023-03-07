@@ -4,7 +4,7 @@ paths:
 
 iaFile: ./ia.yaml
 
-title: Customizable title
+title: Submodules
 
 htmlCustomization:
   path: ./htmlCustomization.html
