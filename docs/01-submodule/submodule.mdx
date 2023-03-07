@@ -1,0 +1,74 @@
+---
+id: 'submodule'
+title: 'Submodule'
+---
+
+## Submodules
+
+### 1. Clonar o repositório com `git submodule add` e modificar a pasta docs e o arquivo `.gitmodules`
+
+Para adicionar um submódulo, isto é uma pasta de outro repositório do GitHub, copiar o endereço do repositório e executar:
+
+```
+git submodule add https://github.com/alexandranaomi/mark-template-test-2.git test-2
+```
+
+sendo `test-2` a pasta de destino, na qual serão clonados todos os arquivos e pastas do repositório de origem.
+
+Arrastar as pastas desejadas para dentro da pasta `docs`. Exemplo:
+
+```
+docs
+     01-submodules  < do repositório test-2
+     03-design-system  < do repositório test-3
+```
+
+Será gerado também o arquivo `.gitmodules`, no qual deverão ser alterados os caminhos conforme a pasta `docs`:
+
+```
+[submodule "docs/01-submodules"]
+	path = docs/01-submodules
+	url = https://github.com/alexandranaomi/mark-template-test-2.git
+[submodule "docs/03-design-system"]
+	path = docs/03-design-system
+	url = https://github.com/alexandranaomi/mark-template-test-3.git
+```
+Depois executar:
+
+```
+git add .
+git commit
+git push
+etc
+```
+
+### 2. Atualizar os submodules
+
+Quando houver modificação no repositório de origem, o submódulo deverá ser atualizado.
+Para atualizar o submódulo entrar na pasta docs e fazer um git pull para puxar as modificaçoes:
+
+```
+cd docs
+git pull
+```
+
+Se estiver atualizado, vai retornar `Already up to date`. Caso contrário vai fazer o pull dos respositórios de origem.
+
+Para sair da pasta docs executar `cd ..`
+
+OBS: o `git pull` dentro da pasta docs atualiza os submódulos (e possivelmente outros arquivos dentro dela). O `git pull` fora dela atualiza o próprio repositório.
+
+### 3. Incluir os submodules em repositório que foi clonado sem eles
+
+Para quem estiver com o repositório sem o submodulo, pode dar o comando abaixo que é combinado para baixar (`git submodule init`) e atualizar ele (`git submodule update`):
+
+```
+git submodule update --init
+```
+
+Para consultar os submodulos de um repositório:
+
+```
+git submodule
+```
+
