@@ -5,5 +5,5 @@ architectures:
       - path: /
         doc: index
 
-      - path: overview
-        doc: 01-overview/overview
+      - path: submodule
+        doc: 01-submodule/submodule
