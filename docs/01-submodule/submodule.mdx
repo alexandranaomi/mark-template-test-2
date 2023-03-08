@@ -72,3 +72,23 @@ Para consultar os submodulos de um repositório:
 git submodule
 ```
 
+Orientações do [ddls](https://github.com/philips-internal/ddls):
+
+This repository has sub repositories inside it as part of the content. If you want to run it locally, cloning via the command line, please add the following flags:
+
+
+To clone add `--recurse-submodules`
+
+To create submodules if you cloned without this option `git submodule update --init --recursive`
+
+To update submodules git submodule update `--recursive --remote`
+
+### 4. ia.yaml
+
+No arquivo `ia.yaml` do repositório de destino incluir o menu do repo de origem fazendo sua importação:
+
+```
+	- path: submodule
+		import: 01-submodule/ia.yaml
+```
+
