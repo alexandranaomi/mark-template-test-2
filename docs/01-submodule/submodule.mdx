@@ -45,7 +45,7 @@ etc
 ### 2. Atualizar os submodules
 
 Quando houver modificação no repositório de origem, o submódulo deverá ser atualizado.
-Para atualizar o submódulo entrar na pasta docs/subpasta e fazer um git pull para puxar as modificaçoes:
+Para atualizar o submódulo entrar em cada pasta docs/subpasta e fazer um git pull para puxar as modificaçoes:
 
 ```
 cd docs/01-submodules
@@ -56,7 +56,19 @@ Se estiver atualizado, vai retornar `Already up to date`. Caso contrário vai fa
 
 Para sair da pasta docs executar `cd ..` 2 vezes.
 
-OBS: o `git pull` dentro da pasta docs atualiza os submódulos (e possivelmente outros arquivos dentro dela). O `git pull` fora dela atualiza o próprio repositório.
+OBS: o `git pull` dentro da pasta docs atualiza os submódulos (e possivelmente outros arquivos dentro dela). O `git pull` fora dela atualiza o próprio repositório. 
+
+OBS: `git pull` = `git fetch` + `git merge`.
+
+Se quiser atualizar o(s) submódulo(s) a partir da pasta pai, executar: `git submodule update --remote`.
+
+Depois dar:
+
+``` 
+git add .
+git commit
+git push origin
+```
 
 ### 3. Incluir os submodules em repositório que foi clonado sem eles
 
@@ -77,11 +89,11 @@ Orientações do [ddls](https://github.com/philips-internal/ddls):
 This repository has sub repositories inside it as part of the content. If you want to run it locally, cloning via the command line, please add the following flags:
 
 
-To clone add `--recurse-submodules`
+To clone add `git clone --recurse-submodules <url>`
 
 To create submodules if you cloned without this option `git submodule update --init --recursive`
 
-To update submodules git submodule update `--recursive --remote`
+To update submodules `git submodule update --recursive --remote`
 
 ### 4. ia.yaml
 
@@ -91,4 +103,23 @@ No arquivo `ia.yaml` do repositório de destino incluir o menu do repo de origem
 	- path: submodule
 		import: 01-submodule/ia.yaml
 ```
+
+### 5. Delete a submodule
+
+Para acompanhar é necessário que os arquivos ocultos estejam visíveis (SHF + CMD + .). São 3 passos dentro da pasta .git do projeto:
+
+- `git rm <submoduleName>` : para apagar a pasta do submodulo
+- `rm -rf .git/modules/submoduleName` : para apagar a pasta do submodulo dentro da pasta .git/modules
+- abrir o arquivo `.git/config` e manualmente apagar as 3 linhas do submodulo
+
+Depois:
+
+``` 
+git add .
+git commit
+git push origin
+```
+
+e conferir no Github.
+
 
